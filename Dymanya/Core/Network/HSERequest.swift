@@ -16,8 +16,6 @@ extension HSERequest {
 }
 
 extension HSERequest {
-    var api: URL { .init(string: .httpUrl.hseApi)! }
-
     var authHeaders: [String: String] {
         ["accept": "application/json"]
     }

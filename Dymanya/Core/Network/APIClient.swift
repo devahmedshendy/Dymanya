@@ -15,8 +15,8 @@ protocol APIClient {
 
 // MARK: Helpers
 
-//extension APIClient where Self == AlamofireClient {
-//    static func alamofire() -> APIClient {
-//        DI.api()
-//    }
-//}
+extension APIClient where Self == AlamofireClient {
+    static func alamofire() -> APIClient {
+        DI.api()
+    }
+}

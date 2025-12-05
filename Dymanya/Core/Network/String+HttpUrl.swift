@@ -11,8 +11,4 @@ import Foundation
 extension String {
     enum httpUrl { }
 }
-
-extension String.httpUrl {
-    static var hseApi: String {"https://gostcode.com/hseNewApi/public/api/hes"}
-}
 // swiftlint:enable type_name

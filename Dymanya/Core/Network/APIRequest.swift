@@ -21,5 +21,5 @@ protocol APIRequest: Encodable {
 
 extension APIRequest {
     var headers: [String: String] { [:] }
-    var url: URL { api.appendingPathComponent(path) }
+    var url: URL { URL(string: path, relativeTo: api)! }
 }

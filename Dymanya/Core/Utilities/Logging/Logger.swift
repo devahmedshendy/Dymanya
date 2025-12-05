@@ -87,6 +87,17 @@ public func errorLog(
     )
 }
 
+public func warningLog(
+    _ object: Any...,
+    fileID: String = #fileID,
+    function: String = #function,
+    line: Int = #line
+) {
+    Logger.standard.warning(
+        "\(formatted(object, fileID: fileID, function: function, line: line))"
+    )
+}
+
 public func deinitLog(
     _ class: AnyObject,
     fileID: String = #fileID,

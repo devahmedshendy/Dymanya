@@ -13,7 +13,12 @@ struct AlamofireClient: APIClient {
 
     private typealias Err = APIError
 
-    private let decoder: JSONDecoder = .init()
+    private let decoder: JSONDecoder = {
+        let decoder = JSONDecoder()
+        decoder.dateDecodingStrategy = .iso8601
+
+        return decoder
+    }()
 
     // MARK: Requests
 
