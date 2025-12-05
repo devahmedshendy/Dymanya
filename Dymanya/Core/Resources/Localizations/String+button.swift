@@ -1,0 +1,12 @@
+//
+//  String+button.swift
+//  PetrojetHSE
+//
+//  Created by Ahmed Shendy on 20/09/2025.
+//
+
+import Foundation
+
+extension String.button {
+    
+}

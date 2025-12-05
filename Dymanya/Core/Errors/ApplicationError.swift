@@ -1,0 +1,51 @@
+//
+//  ApplicationError.swift
+//  CoreModule
+//
+//  Created by Ahmed Shendy on 08/07/2024.
+//
+
+import Foundation
+
+public protocol ApplicationError: LocalizedError,
+                                  CustomStringConvertible,
+                                  CustomDebugStringConvertible {
+    var identifier: String { get }
+    var details: ErrorDetails { get }
+}
+
+public extension ApplicationError {
+    var identifier: String {
+        let typeName = String(describing: Self.self)
+        if let caseName = Mirror(reflecting: self).children.first?.label {
+            return "\(typeName) - \(caseName)"
+        } else {
+            return typeName
+        }
+    }
+
+    var message: String { details.message }
+    var debugMessage: String { details.debugMessage }
+
+    var description: String { details.message }
+    var debugDescription: String { details.debugMessage }
+}
+
+// MARK: ErrorDetails
+
+public struct ErrorDetails {
+    public let message: String
+    public let debugMessage: String
+    public let validations: [String: String]
+
+    init(
+        type: String,
+        message: String,
+        debugMessage: String? = nil,
+        validations: [String: String] = [:]
+    ) {
+        self.message = message
+        self.debugMessage = "\(type) - \(debugMessage ?? message)"
+        self.validations = validations
+    }
+}
