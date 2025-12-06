@@ -5,10 +5,10 @@
 //  Created by Ahmed Shendy on 05/12/2025.
 //
 
-import SwiftUI
+import Foundation
 
 protocol HomeRepositoryProtocol: AnyObject {
-    func fetchSections() async throws
+    func fetchSections() async throws -> Page<[HomeSection]>
 }
 
 final class HomeRepository: HomeRepositoryProtocol {
@@ -25,15 +25,17 @@ final class HomeRepository: HomeRepositoryProtocol {
 
     // MARK: Logic
 
-    func fetchSections() async throws {
+    func fetchSections() async throws -> Page<[HomeSection]> {
         let data = try await self.api.get(
             FetchHomeSectionsRequest()
         )
 
-        debugLog(data)
-
-        if data.sections.isEmpty { return }
-
-        try await fetchSections()
+        return .init(
+            data: data.sections.map { $0.toDomain() },
+            pagination: .init(
+                nextPage: data.pagination.next_page,
+                pageCount: data.pagination.total_pages
+            )
+        )
     }
 }

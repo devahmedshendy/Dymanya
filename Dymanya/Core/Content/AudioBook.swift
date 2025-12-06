@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct AudioBookModel: HomeSectionContentModel {
+struct AudioBookModel: ContentModel {
     static let type: String = "audio_book"
 
     let id: String
@@ -24,17 +24,17 @@ struct AudioBookModel: HomeSectionContentModel {
         case duration
     }
 
-//    var title: String { name }
-//    var imageURL: URL { avatar_url }
-//    var episodeCount: Int { episode_count }
+    func toDomain() -> AudioBook {
+        AudioBook(
+            id: self.id,
+            title: self.name,
+            imageURL: self.avatar_url
+        )
+    }
 }
 
-//extension HomeSectionContent {
-//    init(from model: AudioBookModel) {
-//        self.id = model.id
-//        self.title = model.name
-//        self.imageURL = model.avatar_url
-//        self.episodeCount = model.episode_count
-//        self.duration = "\(model.duration)"
-//    }
-//}
+struct AudioBook: ContentEntity {
+    let id: String
+    let title: String
+    let imageURL: URL
+}

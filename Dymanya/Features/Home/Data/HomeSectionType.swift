@@ -10,7 +10,7 @@ import Foundation
 enum HomeSectionType: String, Decodable {
     case square
     case two_lines_grid = "2_lines_grid"
-    case big_square = "big_square"
+    case big_square
     case queue
     case unknown
 

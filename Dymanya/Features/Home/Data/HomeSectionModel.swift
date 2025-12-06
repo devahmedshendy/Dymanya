@@ -11,7 +11,7 @@ struct HomeSectionModel: Decodable {
     let name: String
     let type: HomeSectionType
     let content_type: String
-    let content: [any HomeSectionContentModel]
+    let content: [any ContentModel]
     let order: Int
 
     enum CodingKeys: CodingKey {
@@ -23,7 +23,7 @@ struct HomeSectionModel: Decodable {
     }
 
     init(from decoder: Decoder) throws {
-        func decodeConcrete<T: HomeSectionContentModel>(
+        func decodeConcrete<T: ContentModel>(
             _ type: T.Type,
             from container: KeyedDecodingContainer<HomeSectionModel.CodingKeys>
         ) throws -> [T] {
@@ -38,14 +38,22 @@ struct HomeSectionModel: Decodable {
 
         self.content_type = try container.decode(String.self, forKey: .content_type)
 
-        guard let type = try ContentTypeRegistry.shared.findType(
-            forKey: content_type,
-            from: container
-        ) else {
+        guard let type = try ContentModelRegistry.shared.findType(forKey: content_type)
+        else {
             self.content = []
             return
         }
 
         self.content = try decodeConcrete(type, from: container)
+    }
+}
+
+extension HomeSectionModel {
+    func toDomain() -> HomeSection {
+        .init(
+            type: self.type,
+            title: self.name,
+            items: self.content.map { $0.toDomain() }
+        )
     }
 }

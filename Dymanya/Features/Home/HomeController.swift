@@ -7,9 +7,15 @@
 
 import SwiftUI
 
-import Swift
-
 final class HomeController: ScreenController {
+
+    // MARK: States0
+
+    @Published var data: [HomeSection] = []
+    private var pagination: Pagination = .init(
+        nextPage: "",
+        pageCount: 0
+    )
 
     // MARK: Properties
 
@@ -27,7 +33,15 @@ final class HomeController: ScreenController {
         run { [weak self] in
             do {
                 await self?.onStartLoading()
-                try await self?.repository.fetchSections()
+                let result = try await self?.repository.fetchSections()
+
+                guard Task.isNotCancelled, let result else { return }
+
+                await MainActor.run { [weak self] in
+                    self?.data = result.data
+                    self?.pagination = result.pagination
+                }
+                
                 await self?.onStopLoading()
 
             } catch {

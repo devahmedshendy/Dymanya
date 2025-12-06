@@ -11,7 +11,15 @@ struct HomeScreen: View {
     @StateObject var controller: HomeController
     
     var body: some View {
-        Text("HomeScreen")
-            .onAppear(perform: controller.screenDidAppear)
+        ScrollView {
+            Text("HomeScreen")
+
+            VStack(spacing: 16) {
+                ForEach(controller.data) { item in
+                    Text(item.title + " – " + item.type.rawValue)
+                }
+            }
+        }
+        .onAppear(perform: controller.screenDidAppear)
     }
 }

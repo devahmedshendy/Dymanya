@@ -25,19 +25,19 @@ struct ProjectApp: App {
     }
 
     private func setupContentTypeRegistry() {
-        ContentTypeRegistry.shared.register(
+        ContentModelRegistry.shared.register(
             PodcastModel.self, for: PodcastModel.type
         )
 
-        ContentTypeRegistry.shared.register(
+        ContentModelRegistry.shared.register(
             EpisodeModel.self, for: EpisodeModel.type
         )
 
-        ContentTypeRegistry.shared.register(
+        ContentModelRegistry.shared.register(
             AudioBookModel.self, for: AudioBookModel.type
         )
 
-        ContentTypeRegistry.shared.register(
+        ContentModelRegistry.shared.register(
             AudioArticleModel.self, for: AudioArticleModel.type
         )
     }

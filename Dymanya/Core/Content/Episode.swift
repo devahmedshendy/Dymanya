@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct EpisodeModel: HomeSectionContentModel {
+struct EpisodeModel: ContentModel {
     static let type: String = "episode"
 
     let id: String
@@ -26,17 +26,17 @@ struct EpisodeModel: HomeSectionContentModel {
         case release_date
     }
 
-//    var title: String { name }
-//    var imageURL: URL { avatar_url }
-//    var episodeCount: Int { episode_count }
+    func toDomain() -> Episode {
+        Episode(
+            id: self.id,
+            title: self.name,
+            imageURL: self.avatar_url
+        )
+    }
 }
 
-//extension HomeSectionContent {
-//    init(from model: EpisodeModel) {
-//        self.id = model.id
-//        self.title = model.name
-//        self.imageURL = model.avatar_url
-//        self.episodeCount = model.episode_count
-//        self.duration = "\(model.duration)"
-//    }
-//}
+struct Episode: ContentEntity {
+    let id: String
+    let title: String
+    let imageURL: URL
+}
