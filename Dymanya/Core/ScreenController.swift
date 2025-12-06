@@ -94,8 +94,7 @@ class ScreenController: ObservableObject {
 
     func onLoadingFailure(_ error: Error) async {
         await MainActor.run { [weak self] in
-            self?.isLoading = false
-            self?.toast = error.mapToApplicationError().message
+            self?.onLoadingFailure(error)
         }
     }
 
@@ -110,12 +109,30 @@ class ScreenController: ObservableObject {
 
     // isLoadingMore
 
+    func onStartLoadingMore() async {
+        await MainActor.run { [weak self] in
+            self?.onStartLoadingMore()
+        }
+    }
+
     func onStartLoadingMore() {
         self.isLoadingMore = true
     }
 
+    func onStopLoadingMore() async {
+        await MainActor.run { [weak self] in
+            self?.onStopLoadingMore()
+        }
+    }
+
     func onStopLoadingMore() {
         self.isLoadingMore = false
+    }
+
+    func onLoadingMoreFailure(_ error: Error) async {
+        await MainActor.run { [weak self] in
+            self?.onLoadingMoreFailure(error)
+        }
     }
 
     func onLoadingMoreFailure(_ error: Error) {

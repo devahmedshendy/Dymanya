@@ -24,5 +24,7 @@ struct FetchHomeSectionsRequest: APIGetRequest {
 
 struct FetchHomeSectionsResponse: APIResponse {
     let sections: [HomeSectionModel]
+
+    // no point, api reply with random data on each request, pagination is a simualtion
     let pagination: PaginationModel
 }

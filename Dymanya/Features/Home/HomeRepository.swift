@@ -8,7 +8,13 @@
 import Foundation
 
 protocol HomeRepositoryProtocol: AnyObject {
-    func fetchSections() async throws -> Page<[HomeSection]>
+    func fetchSections() async throws -> [HomeSection]
+}
+
+extension HomeRepositoryProtocol where Self == HomeRepository {
+    func `default`() -> Self {
+        .init()
+    }
 }
 
 final class HomeRepository: HomeRepositoryProtocol {
@@ -25,19 +31,13 @@ final class HomeRepository: HomeRepositoryProtocol {
 
     // MARK: Logic
 
-    func fetchSections() async throws -> Page<[HomeSection]> {
+    func fetchSections() async throws -> [HomeSection] {
         let data = try await self.api.get(
             FetchHomeSectionsRequest()
         )
 
-        return .init(
-            data: data.sections
-                .sorted { $0.order < $1.order }
-                .map { $0.toDomain() },
-            pagination: .init(
-                nextPage: data.pagination.next_page,
-                pageCount: data.pagination.total_pages
-            )
-        )
+        return data.sections
+            .sorted { $0.order < $1.order }
+            .map { $0.toDomain() }
     }
 }

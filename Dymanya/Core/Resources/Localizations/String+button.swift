@@ -8,5 +8,5 @@
 import Foundation
 
 extension String.button {
-    
+    static var TryAgain: String { "Try Again" }
 }

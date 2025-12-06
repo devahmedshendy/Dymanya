@@ -11,11 +11,7 @@ final class HomeController: ScreenController {
 
     // MARK: States0
 
-    @Published var data: [HomeSection] = []
-    private var pagination: Pagination = .init(
-        nextPage: "",
-        pageCount: 0
-    )
+    @Published var data: HomeScreenState<[HomeSection]> = .idle
 
     // MARK: Properties
 
@@ -29,7 +25,9 @@ final class HomeController: ScreenController {
 
     // MARK: Logic
 
-    func screenDidAppear() {
+    func fetchFirstPage() {
+        self.data = .fresh
+
         run { [weak self] in
             do {
                 await self?.onStartLoading()
@@ -38,8 +36,7 @@ final class HomeController: ScreenController {
                 guard Task.isNotCancelled, let result else { return }
 
                 await MainActor.run { [weak self] in
-                    self?.data = result.data
-                    self?.pagination = result.pagination
+                    self?.data = result.isEmpty ? .empty : .ready(result)
                 }
                 
                 await self?.onStopLoading()
@@ -48,6 +45,30 @@ final class HomeController: ScreenController {
                 guard Task.isNotCancelled else { return }
 
                 await self?.onLoadingFailure(error)
+            }
+        }
+    }
+
+    func fetchNextPage() {
+        run { [weak self] in
+            do {
+                await self?.onStartLoadingMore()
+                let result = try await self?.repository.fetchSections()
+
+                guard Task.isNotCancelled, let result else { return }
+
+                await MainActor.run { [weak self] in
+                    if result.isEmpty == false, case let .ready(data) = self?.data {
+                        self?.data = .ready(data + result)
+                    }
+                }
+
+                await self?.onStopLoadingMore()
+
+            } catch {
+                guard Task.isNotCancelled else { return }
+
+                await self?.onLoadingMoreFailure(error)
             }
         }
     }

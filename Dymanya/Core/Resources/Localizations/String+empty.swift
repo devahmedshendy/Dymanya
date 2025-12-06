@@ -8,5 +8,6 @@
 import Foundation
 
 extension String.empty {
-    static var NoAvailableContent: String { .init("Empty_NoAvailableContent")}
+    static var NoAvailableContent: String { .init("No available content")}
+    static var NoAvailableContentDescription: String { .init("There are currently no content to show. Please try again.")}
 }
