@@ -55,7 +55,7 @@ private struct CompactRowCard: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(item.title)
                     .font(Typography.subheadline) // Slightly smaller for dense grid
-                    .lineLimit(2)
+                    .lineLimit(2, reservesSpace: true)
                     .foregroundStyle(.primary)
 
 //                if let sub = item as? HasSubtitle {

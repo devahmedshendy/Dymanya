@@ -29,13 +29,15 @@ struct PodcastModel: ContentModel {
         Podcast(
             id: self.id,
             title: self.name,
-            imageURL: self.avatar_url
+            imageURL: self.avatar_url,
+            duration: self.duration
         )
     }
 }
 
-struct Podcast: SectionLayoutItem {
+struct Podcast: SectionLayoutItem, HasDuration {
     let id: String
     let title: String
     let imageURL: URL
+    let duration: Int
 }

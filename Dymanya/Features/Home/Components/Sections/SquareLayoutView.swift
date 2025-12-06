@@ -63,7 +63,7 @@ private struct StandardVerticalCard: View {
             VStack(alignment: .leading, spacing: 4) {
                 Text(item.title)
                     .font(Typography.cardTitle)
-                    .lineLimit(2)
+                    .lineLimit(2, reservesSpace: true)
                     .foregroundStyle(.primary)
 
 //                if let sub = item as? HasSubtitle {

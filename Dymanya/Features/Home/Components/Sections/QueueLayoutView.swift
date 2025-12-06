@@ -14,23 +14,6 @@ struct QueueLayoutView: SectionLayoutView {
         self.data = data
     }
 
-//    var body: some View {
-//        VStack(alignment: .leading, spacing: .spacing) {
-//            SectionHeader(title: data.title)
-//
-//            ScrollView(.horizontal, showsIndicators: false) {
-//                HStack(spacing: .padding) {
-//                    ForEach(data.items, id: \.id) { item in
-//                        ImmersiveHeroCard(item: item)
-//                    }
-//                }
-//                .padding(.horizontal, .padding)
-//                // Add bottom padding for shadow clipping
-//                .padding(.bottom, 20)
-//            }
-//        }
-//    }
-
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
             SectionHeader(title: data.title)
@@ -48,64 +31,7 @@ struct QueueLayoutView: SectionLayoutView {
     }
 }
 
-private struct HeroCard: View {
-    let item: any SectionLayoutItem
-
-    var body: some View {
-        HStack(spacing: 0) {
-            // Image
-            AsyncImage(url: item.imageURL) { phase in
-                if let image = phase.image {
-                    image.resizable().aspectRatio(contentMode: .fill)
-                } else {
-                    Color.gray.opacity(0.1)
-                }
-            }
-            .frame(width: 110)
-            .clipped()
-
-            // Content
-            VStack(alignment: .leading, spacing: 6) {
-//                if let sub = item as? HasSubtitle {
-//                    Text(sub.subtitle)
-//                        .font(Typography.caption)
-//                        .foregroundStyle(.blue)
-//                }
-
-                Text(item.title)
-                    .font(Typography.heroTitle)
-                    .lineLimit(3)
-                    .fixedSize(horizontal: false, vertical: true)
-                    .foregroundStyle(.primary)
-
-                Spacer()
-
-                HStack {
-                    if let dur = item as? HasDuration {
-                        Label(dur.durationDisplay, systemImage: "clock")
-                            .font(Typography.caption)
-                            .foregroundStyle(.secondary)
-                    }
-
-                    Spacer()
-
-                    Image(systemName: "play.circle.fill")
-                        .font(.system(size: 36))
-                        .foregroundStyle(Color.primary)
-                }
-            }
-            .padding(16)
-            .frame(height: 140)
-        }
-        .frame(width: 320, height: 140)
-        .background(Color(uiColor: .secondarySystemGroupedBackground))
-        .cornerRadius(.cornerRadius)
-        .shadow(color: .black.opacity(0.08), radius: 10, x: 0, y: 4)
-    }
-}
-
-
-struct ImmersiveHeroCard: View {
+private struct ImmersiveHeroCard: View {
     let item: any SectionLayoutItem
 
     var body: some View {
@@ -119,14 +45,14 @@ struct ImmersiveHeroCard: View {
                 }
             }
             .frame(width: 320, height: 200)
-//            .overlay(
-//                // 2. Cinematic Gradient Overlay
-//                LinearGradient(
-//                    colors: [.black.opacity(0.8), .transparent],
-//                    startPoint: .bottom,
-//                    endPoint: .top
-//                )
-//            )
+            .overlay(
+                // 2. Cinematic Gradient Overlay
+                LinearGradient(
+                    colors: [.black.opacity(0.8), .clear],
+                    startPoint: .bottom,
+                    endPoint: .top
+                )
+            )
             .cornerRadius(Design.cardRadius)
 
             // 3. Floating Content
@@ -146,7 +72,7 @@ struct ImmersiveHeroCard: View {
                     Text(item.title)
                         .font(.bold(size: 18))
                         .foregroundColor(.white)
-                        .lineLimit(2)
+                        .lineLimit(2, reservesSpace: true)
                         .shadow(radius: 4)
 
                     if let dur = item as? HasDuration {
@@ -175,3 +101,60 @@ struct ImmersiveHeroCard: View {
         .shadow(color: Design.floatingShadow, radius: 12, x: 0, y: 8)
     }
 }
+
+
+//private struct HeroCard: View {
+//    let item: any SectionLayoutItem
+//
+//    var body: some View {
+//        HStack(spacing: 0) {
+//            // Image
+//            AsyncImage(url: item.imageURL) { phase in
+//                if let image = phase.image {
+//                    image.resizable().aspectRatio(contentMode: .fill)
+//                } else {
+//                    Color.gray.opacity(0.1)
+//                }
+//            }
+//            .frame(width: 110)
+//            .clipped()
+//
+//            // Content
+//            VStack(alignment: .leading, spacing: 6) {
+////                if let sub = item as? HasSubtitle {
+////                    Text(sub.subtitle)
+////                        .font(Typography.caption)
+////                        .foregroundStyle(.blue)
+////                }
+//
+//                Text(item.title)
+//                    .font(Typography.heroTitle)
+//                    .lineLimit(3)
+//                    .fixedSize(horizontal: false, vertical: true)
+//                    .foregroundStyle(.primary)
+//
+//                Spacer()
+//
+//                HStack {
+//                    if let dur = item as? HasDuration {
+//                        Label(dur.durationDisplay, systemImage: "clock")
+//                            .font(Typography.caption)
+//                            .foregroundStyle(.secondary)
+//                    }
+//
+//                    Spacer()
+//
+//                    Image(systemName: "play.circle.fill")
+//                        .font(.system(size: 36))
+//                        .foregroundStyle(Color.primary)
+//                }
+//            }
+//            .padding(16)
+//            .frame(height: 140)
+//        }
+//        .frame(width: 320, height: 140)
+//        .background(Color(uiColor: .secondarySystemGroupedBackground))
+//        .cornerRadius(.cornerRadius)
+//        .shadow(color: .black.opacity(0.08), radius: 10, x: 0, y: 4)
+//    }
+//}

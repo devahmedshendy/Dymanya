@@ -29,13 +29,17 @@ struct AudioBookModel: ContentModel {
         AudioBook(
             id: self.id,
             title: self.name,
-            imageURL: self.avatar_url
+            imageURL: self.avatar_url,
+            duration: self.duration,
+            releaseDate: self.release_date
         )
     }
 }
 
-struct AudioBook: SectionLayoutItem {
+struct AudioBook: SectionLayoutItem, HasDuration, HasReleaseDate {
     let id: String
     let title: String
     let imageURL: URL
+    let duration: Int
+    let releaseDate: Date
 }

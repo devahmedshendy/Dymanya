@@ -51,14 +51,11 @@ struct HomeScreen: View {
             LazyVStack(spacing: 32) {
                 ForEach(data) { section in
                     SectionLayoutRenderer(section: section)
-                }
 
-                if !data.isEmpty {
-                    Color.clear
-                        .frame(height: 50)
-                        .onAppear {
-                            controller.fetchNextPage()
-                        }
+                    if section == data.last {
+                        Color.clear
+                            .onAppear(perform: controller.fetchNextPage)
+                    }
                 }
 
                 if controller.isLoadingMore {

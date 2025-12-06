@@ -27,13 +27,15 @@ struct AudioArticleModel: ContentModel {
         AudioArticle(
             id: self.id,
             title: self.name,
-            imageURL: self.avatar_url
+            imageURL: self.avatar_url,
+            releaseDate: self.release_date
         )
     }
 }
 
-struct AudioArticle: SectionLayoutItem {
+struct AudioArticle: SectionLayoutItem, HasReleaseDate {
     let id: String
     let title: String
     let imageURL: URL
+    let releaseDate: Date
 }

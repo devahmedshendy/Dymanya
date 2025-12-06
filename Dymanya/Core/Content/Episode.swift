@@ -14,7 +14,6 @@ struct EpisodeModel: ContentModel {
     let id: String
     let name: String
     let avatar_url: URL
-    let audio_url: URL
     let duration: Int
     let release_date: Date
 
@@ -22,7 +21,6 @@ struct EpisodeModel: ContentModel {
         case id = "episode_id"
         case name
         case avatar_url
-        case audio_url
         case duration
         case release_date
     }
@@ -31,13 +29,17 @@ struct EpisodeModel: ContentModel {
         Episode(
             id: self.id,
             title: self.name,
-            imageURL: self.avatar_url
+            imageURL: self.avatar_url,
+            duration: self.duration,
+            releaseDate: self.release_date
         )
     }
 }
 
-struct Episode: SectionLayoutItem {
+struct Episode: SectionLayoutItem, HasDuration, HasReleaseDate {
     let id: String
     let title: String
     let imageURL: URL
+    let duration: Int
+    let releaseDate: Date
 }
