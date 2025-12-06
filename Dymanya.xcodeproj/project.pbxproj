@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		641820C42EE42AFD00BCE787 /* SectionLayoutRegistry in Frameworks */ = {isa = PBXBuildFile; productRef = 641820C32EE42AFD00BCE787 /* SectionLayoutRegistry */; };
 		64E5E95C2EE3255300E7E5D9 /* Alamofire in Frameworks */ = {isa = PBXBuildFile; productRef = 64E5E95B2EE3255300E7E5D9 /* Alamofire */; };
 		64E5E97F2EE325C100E7E5D9 /* FactoryKit in Frameworks */ = {isa = PBXBuildFile; productRef = 64E5E97E2EE325C100E7E5D9 /* FactoryKit */; };
 /* End PBXBuildFile section */
@@ -43,6 +44,7 @@
 			files = (
 				64E5E97F2EE325C100E7E5D9 /* FactoryKit in Frameworks */,
 				64E5E95C2EE3255300E7E5D9 /* Alamofire in Frameworks */,
+				641820C42EE42AFD00BCE787 /* SectionLayoutRegistry in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -87,6 +89,7 @@
 			packageProductDependencies = (
 				64E5E95B2EE3255300E7E5D9 /* Alamofire */,
 				64E5E97E2EE325C100E7E5D9 /* FactoryKit */,
+				641820C32EE42AFD00BCE787 /* SectionLayoutRegistry */,
 			);
 			productName = Dymanya;
 			productReference = 64E9E70A2EE3099D00A8CD8E /* Dymanya.app */;
@@ -119,6 +122,7 @@
 			packageReferences = (
 				64E5E95A2EE3255300E7E5D9 /* XCRemoteSwiftPackageReference "Alamofire" */,
 				64E5E97D2EE325C100E7E5D9 /* XCRemoteSwiftPackageReference "Factory" */,
+				641820C22EE42AFD00BCE787 /* XCLocalSwiftPackageReference "Packages/SectionLayoutRegistry" */,
 			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 64E9E70B2EE3099D00A8CD8E /* Products */;
@@ -363,6 +367,13 @@
 		};
 /* End XCConfigurationList section */
 
+/* Begin XCLocalSwiftPackageReference section */
+		641820C22EE42AFD00BCE787 /* XCLocalSwiftPackageReference "Packages/SectionLayoutRegistry" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/SectionLayoutRegistry;
+		};
+/* End XCLocalSwiftPackageReference section */
+
 /* Begin XCRemoteSwiftPackageReference section */
 		64E5E95A2EE3255300E7E5D9 /* XCRemoteSwiftPackageReference "Alamofire" */ = {
 			isa = XCRemoteSwiftPackageReference;
@@ -383,6 +394,10 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		641820C32EE42AFD00BCE787 /* SectionLayoutRegistry */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = SectionLayoutRegistry;
+		};
 		64E5E95B2EE3255300E7E5D9 /* Alamofire */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 64E5E95A2EE3255300E7E5D9 /* XCRemoteSwiftPackageReference "Alamofire" */;

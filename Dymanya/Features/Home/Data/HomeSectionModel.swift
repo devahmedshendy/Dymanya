@@ -53,7 +53,9 @@ extension HomeSectionModel {
         .init(
             type: self.type,
             title: self.name,
-            items: self.content.map { $0.toDomain() }
+            items: self.content
+                .uniqued(by: \.id)
+                .map { $0.toDomain() }
         )
     }
 }

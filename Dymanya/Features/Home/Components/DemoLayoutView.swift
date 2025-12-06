@@ -1,3 +1,13 @@
+//
+//  DemoLayoutView.swift
+//  Dymanya
+//
+//  Created by Ahmed Shendy on 06/12/2025.
+//
+
+import SwiftUI
+import SectionLayoutRegistry
+
 struct DemoLayoutView: View {
     let identifier: String
     let data: any SectionLayout

@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import SectionLayoutRegistry
 
-struct HomeSection: Identifiable {
-    let id = UUID()
+struct HomeSection: SectionLayout {
+    let id = UUID().uuidString
     let type: HomeSectionType
     let title: String
-    let items: [any ContentEntity]
+    let items: [any SectionLayoutItem]
 }

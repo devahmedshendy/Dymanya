@@ -6,9 +6,10 @@
 //
 
 import Foundation
+import SectionLayoutRegistry
 
 protocol ContentDomainConvertible {
-    associatedtype Domain: ContentEntity
+    associatedtype Domain: SectionLayoutItem
     func toDomain() -> Domain
 }
 

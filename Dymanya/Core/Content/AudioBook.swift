@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SectionLayoutRegistry
 
 struct AudioBookModel: ContentModel {
     static let type: String = "audio_book"
@@ -33,7 +34,7 @@ struct AudioBookModel: ContentModel {
     }
 }
 
-struct AudioBook: ContentEntity {
+struct AudioBook: SectionLayoutItem {
     let id: String
     let title: String
     let imageURL: URL

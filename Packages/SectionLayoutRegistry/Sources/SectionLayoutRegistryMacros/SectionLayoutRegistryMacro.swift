@@ -29,7 +29,7 @@ public struct SectionRegistryMacro: MemberMacro {
             // 3. Generate the Case Code
             cases.append("""
             case \(enumCase):
-                \(viewType)(items: section.items)
+                \(viewType)(data: section)
             """)
         }
 

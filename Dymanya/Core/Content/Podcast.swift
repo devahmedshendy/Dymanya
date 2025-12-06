@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SectionLayoutRegistry
 
 struct PodcastModel: ContentModel {
     static let type: String = "podcast"
@@ -33,7 +34,7 @@ struct PodcastModel: ContentModel {
     }
 }
 
-struct Podcast: ContentEntity {
+struct Podcast: SectionLayoutItem {
     let id: String
     let title: String
     let imageURL: URL

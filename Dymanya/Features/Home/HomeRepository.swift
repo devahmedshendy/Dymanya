@@ -31,7 +31,9 @@ final class HomeRepository: HomeRepositoryProtocol {
         )
 
         return .init(
-            data: data.sections.map { $0.toDomain() },
+            data: data.sections
+                .sorted { $0.order < $1.order }
+                .map { $0.toDomain() },
             pagination: .init(
                 nextPage: data.pagination.next_page,
                 pageCount: data.pagination.total_pages

@@ -13,10 +13,11 @@ struct HomeScreen: View {
     var body: some View {
         ScrollView {
             Text("HomeScreen")
+                .font(.largeTitle)
 
             VStack(spacing: 16) {
                 ForEach(controller.data) { item in
-                    Text(item.title + " – " + item.type.rawValue)
+                    SectionRenderer(section: item)
                 }
             }
         }

@@ -1,5 +1,5 @@
 import SwiftUI
 
 public protocol SectionLayoutView: View {
-    init(items: [any SectionItem])
+    init(data: any SectionLayout)
 }
