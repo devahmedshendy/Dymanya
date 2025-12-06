@@ -32,6 +32,10 @@ extension CGFloat {
 }
 
 extension CGFloat {
+    static let cornerRadius: CGFloat = 12
+    static let padding: CGFloat = 16
+    static let spacing: CGFloat = 12
+
     static var textFieldCornerRadius: CGFloat { .responsive(10) }
     static var textFieldHorizontalPadding: CGFloat { 16 }
     static var textFieldVerticalPadding: CGFloat { 18 }

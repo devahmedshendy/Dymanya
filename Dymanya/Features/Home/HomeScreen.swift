@@ -12,15 +12,15 @@ struct HomeScreen: View {
     
     var body: some View {
         ScrollView {
-            Text("HomeScreen")
-                .font(.largeTitle)
-
-            VStack(spacing: 16) {
+            VStack(spacing: 32) {
                 ForEach(controller.data) { item in
-                    SectionRenderer(section: item)
+                    SectionLayoutRenderer(section: item)
                 }
             }
+            .padding(.top)
+            .padding(.bottom, 50)
         }
+        .background(Color(uiColor: .systemGroupedBackground))
         .onAppear(perform: controller.screenDidAppear)
     }
 }

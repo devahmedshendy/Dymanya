@@ -1,5 +1,5 @@
 //
-//  SectionRenderer.swift
+//  SectionLayoutRenderer.swift
 //  Dymanya
 //
 //  Created by Ahmed Shendy on 06/12/2025.
@@ -14,6 +14,6 @@ import SectionLayoutRegistry
     (.two_lines_grid, TwoLinesGridLayoutView.self),
     (.queue, QueueLayoutView.self),
 ])
-struct SectionRenderer: View {
+struct SectionLayoutRenderer: View {
     let section: HomeSection
 }
