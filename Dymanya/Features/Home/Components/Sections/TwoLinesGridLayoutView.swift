@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SectionLayoutRegistry
 
 struct TwoLinesGridLayoutView: SectionLayoutView {
     let data: any SectionLayout

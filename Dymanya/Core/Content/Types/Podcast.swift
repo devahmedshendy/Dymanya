@@ -1,45 +1,42 @@
 //
-//  AudioBookModel.swift
+//  PodcastModel.swift
 //  Dynamya
 //
 //  Created by Ahmed Shendy on 05/12/2025.
 //
 
 import Foundation
-import SectionLayoutRegistry
 
-struct AudioBookModel: ContentModel {
-    static let type: String = "audio_book"
+struct PodcastModel: ContentModel {
+    static let type: String = "podcast"
 
     let id: String
     let name: String
     let avatar_url: URL
-    let release_date: Date
+    let episode_count: Int
     let duration: Int
 
     enum CodingKeys: String, CodingKey {
-        case id = "audiobook_id"
+        case id = "podcast_id"
         case name
         case avatar_url
-        case release_date
+        case episode_count
         case duration
     }
 
-    func toDomain() -> AudioBook {
-        AudioBook(
+    func toDomain() -> Podcast {
+        Podcast(
             id: self.id,
             title: self.name,
             imageURL: self.avatar_url,
-            duration: self.duration,
-            releaseDate: self.release_date
+            duration: self.duration
         )
     }
 }
 
-struct AudioBook: SectionLayoutItem, HasDuration, HasReleaseDate {
+struct Podcast: SectionLayoutItem, HasDuration {
     let id: String
     let title: String
     let imageURL: URL
     let duration: Int
-    let releaseDate: Date
 }

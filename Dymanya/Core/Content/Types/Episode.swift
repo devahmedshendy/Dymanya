@@ -1,43 +1,44 @@
 //
-//  PodcastModel.swift
+//  Episode.swift
 //  Dynamya
 //
 //  Created by Ahmed Shendy on 05/12/2025.
 //
 
 import Foundation
-import SectionLayoutRegistry
 
-struct PodcastModel: ContentModel {
-    static let type: String = "podcast"
+struct EpisodeModel: ContentModel {
+    static let type: String = "episode"
 
     let id: String
     let name: String
     let avatar_url: URL
-    let episode_count: Int
     let duration: Int
+    let release_date: Date
 
     enum CodingKeys: String, CodingKey {
-        case id = "podcast_id"
+        case id = "episode_id"
         case name
         case avatar_url
-        case episode_count
         case duration
+        case release_date
     }
 
-    func toDomain() -> Podcast {
-        Podcast(
+    func toDomain() -> Episode {
+        Episode(
             id: self.id,
             title: self.name,
             imageURL: self.avatar_url,
-            duration: self.duration
+            duration: self.duration,
+            releaseDate: self.release_date
         )
     }
 }
 
-struct Podcast: SectionLayoutItem, HasDuration {
+struct Episode: SectionLayoutItem, HasDuration, HasReleaseDate {
     let id: String
     let title: String
     let imageURL: URL
     let duration: Int
+    let releaseDate: Date
 }

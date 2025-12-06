@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SectionLayoutRegistry
 
 struct BigSquareLayoutView: SectionLayoutView {
     let data: any SectionLayout

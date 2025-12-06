@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SectionLayoutRegistry
 
 protocol ContentDomainConvertible {
     associatedtype Domain: SectionLayoutItem

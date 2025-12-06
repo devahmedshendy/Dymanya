@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SectionLayoutRegistry
 
 struct SquareLayoutView: SectionLayoutView {
     let data: any SectionLayout

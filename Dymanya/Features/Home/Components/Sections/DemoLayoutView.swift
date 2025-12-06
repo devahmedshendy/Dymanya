@@ -6,7 +6,6 @@
 //
 
 import SwiftUI
-import SectionLayoutRegistry
 
 struct DemoLayoutView: View {
     let identifier: String

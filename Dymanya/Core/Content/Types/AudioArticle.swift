@@ -6,7 +6,6 @@
 //
 
 import Foundation
-import SectionLayoutRegistry
 
 struct AudioArticleModel: ContentModel {
     static let type: String = "audio_article"
