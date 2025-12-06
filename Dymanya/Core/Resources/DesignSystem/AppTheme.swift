@@ -1,6 +1,6 @@
 //
 //  AppTheme.swift
-//  Dymanya
+//  Dynamya
 //
 //  Created by Ahmed Shendy on 06/12/2025.
 //

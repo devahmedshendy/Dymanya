@@ -1,6 +1,6 @@
 //
 //  AudioBookModel.swift
-//  Dymanya
+//  Dynamya
 //
 //  Created by Ahmed Shendy on 05/12/2025.
 //

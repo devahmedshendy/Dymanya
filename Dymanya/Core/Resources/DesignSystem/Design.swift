@@ -1,11 +1,11 @@
 //
 //  Design.swift
-//  Dymanya
+//  Dynamya
 //
 //  Created by Ahmed Shendy on 06/12/2025.
 //
 
-import Foundation
+import SwiftUI
 
 struct Design {
     static let pagePadding: CGFloat = 20
